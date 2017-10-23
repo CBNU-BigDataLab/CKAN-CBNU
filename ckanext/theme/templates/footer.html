@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="container">
+    {% block footer_content %}
+    <div class="row">
+      <div class="col-md-8 footer-links">
+  	<div>
+		<h1><a href="/"><strong>보건의료 데이터 포털</strong><a></h1>
+	</div>
+      </div>
+      <div class="col-md-4 attribution">
+        {% block footer_attribution %}
+          <p style="text-align:right">
+		<a class="hide-text" href="http://ckan.org"><strong>사이트소개</strong></a>&nbsp;&nbsp;<strong>|</strong>&nbsp;
+		<a class="hide-text" href="http://ckan.org"><strong>데이터이용안내</strong></a>&nbsp;&nbsp;<strong>|<strong>&nbsp;
+		<a class="hide-text" href="http://ckan.org"><strong>데이터신청</strong></a>
+	  </p>
+        {% endblock %}
+        {% block footer_lang %}
+          {% snippet "snippets/language_selector.html" %}
+        {% endblock %}
+      </div>
+    </div>
+    {% endblock %}
+  <div> 
+  {% block footer_debug %}
+    {% if g.debug %}
+      {% include 'snippets/debug.html' %}
+    {% endif %}
+  {% endblock %}
+</footer>
+<div style="color:#FFF; background-color:#444; margin-top:153px;">
+ 	<div class="container" style="">
+		 <p style="text-align:right; padding-top:10px;">Powered by CKAN / Designed by 충북대학교, ㈜헤븐리아이디어</p>
+        </div>
+</div>
+

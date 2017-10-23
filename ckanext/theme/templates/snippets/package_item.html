@@ -1,0 +1,18 @@
+{% ckan_extends %}
+
+{% block content %}
+  {{ super() }}
+
+  {% resource 'theme/theme_popover.js' %}
+  {% resource 'theme/theme_popover.css' %}
+  {% resource 'theme/jquery.greenify.js' %}
+  {% resource 'theme/jquery.popover.js' %}
+  <br />
+  <button data-module="theme_popover"
+          data-module-id="{{ package.id }}"
+          data-module-title="{{ package.title }}"
+          data-module-license_title="{{ package.license_title }}"
+          data-module-num_resources="{{ package.num_resources }}">
+    <i class="fa fa-info-circle"></i>
+  </button>
+{% endblock %}
