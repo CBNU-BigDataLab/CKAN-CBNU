@@ -1,7 +1,9 @@
 import ckan.plugins as plugins
-from ckan.lib.base import BaseController
+import ckan.lib.base as base
 
-class PageController(BaseController):
+class PageController(base.BaseController):
 
     def sitemap(self):
 	return plugins.toolkit.render('sitemap.html')
+    def usingInformation(self):
+	return plugins.toolkit.render('using-information.html')
