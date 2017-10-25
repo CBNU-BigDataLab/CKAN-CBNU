@@ -1,39 +1,23 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+import logging
+import ckanext.theme.logic.auth
+#import ckanext.theme.logic.action.create
+#import ckanext.theme.logic.action.delete
+#import ckanext.theme.logic.action.update
+import ckanext.theme.logic.action.get
+import ckanext.theme.logic.helpers as theme_helpers
 
 import urllib2
 import json
 
-# SQL Alchemy
-from sqlalchemy import create_engine
-from sqlalchemy import Column, String, Date, Integer, Sequence
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from datetime import datetime
+log = logging.getLogger(__name__)
 
-db = create_engine('postgresql://ckan_healthcare:Dbnis32581234@localhost/ckan_healthcare')
 
-base = declarative_base()
 
-def _get_date():
-    return datetime.now()
-
-class Article(base):
-    __tablename__ = 'articles'
-    id = Column(Integer, Sequence('articles_id_seq'), primary_key=True)
-    title = Column(String)
-    content = Column(String)
-    author = Column(String)
-    created_date = Column(Date, default = _get_date)
-    update_date = Column(Date, onupdate = _get_date)
-
-Session = sessionmaker(db)
-session = Session()
-
-def get_all_articles():
-    articles = session.query(Article) 
-    session.close()
-    return articles
+#def get_all_articles():
+    #return articles
+#    pass
 
 def most_popular_groups():
     groups = toolkit.get_action('group_list')(data_dict={'sort':'package_count desc', 'all_fields': True})
@@ -60,7 +44,9 @@ def get_agency_dataset_count():
 class ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer),
     plugins.implements(plugins.IRoutes, inherit=True),
-    plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.ITemplateHelpers),
+    plugins.implements(plugins.IAuthFunctions),
+    plugins.implements(plugins.IActions)
 
     # IConfigurer
 
@@ -68,6 +54,8 @@ class ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'theme')
+
+   # IRoutes
     
     def before_map(self, m):
         # Sitemap Page Routing
@@ -77,13 +65,41 @@ class ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 		action='sitemap')
         m.connect('usingInformation',
                 '/usage',
+
                 controller='ckanext.theme.controller:PageController',
                 action='usingInformation')
+
+        # Routing with Article
+        m.connect('ckanext_theme_article_by_id',
+                '/articles/{id}',
+                controller='ckanext.theme.controller:PageController',
+                action='get_article_by_id') 
+        m.connect('ckanext_theme_get_all_articles',
+		'/articles',
+                controller='ckanext.theme.controller:PageController',
+		action='get_all_articles')
 	return m
 
+    # ITemplateHelper
     def get_helpers(self):
         return {'theme_most_popular_groups': most_popular_groups,
-                'theme_get_all_articles'   : get_all_articles,
+                'theme_get_all_articles'   : theme_helpers.get_top_articles,
                 'theme_organization_count' : get_organization_count,
 		'theme_dataset_count' : get_dataset_count,
-                'theme_agency_dataset_count': get_agency_dataset_count}
+                'theme_agency_dataset_count': get_agency_dataset_count
+        
+        }
+
+    # IAuthFunctions
+    def get_auth_functions(self):
+        return { 
+             'ckanext_theme_list': ckanext.theme.logic.auth.list
+        }
+
+    # IActions
+    def get_actions(self):
+        return {
+            'ckanext_theme_get_all_articles': ckanext.theme.logic.action.get.get_all_articles,
+	    'ckanext_theme_get_article_by_id': ckanext.theme.logic.action.get.get_article_by_id
+        }
+
