@@ -58,14 +58,9 @@
 		<div class="panel-heading" style="padding:20px 15px; font-size:24px; font-weight:bold;">공지사항</div>
 		<div class="panel-body">
 			<ul style="list-style-type: none; padding-left: 2em; text-indent: -2em;">
-                             	{% for group in h.theme_most_popular_groups() %}
-			      		<li>{{ group.display_name }}</li>
+                             	{% for article in h.theme_get_all_articles() %}
+                                        <li><a href="javascript:;">{{ article.title }}</a><p>{{ article.created_date }}</p></li>
 				{% endfor %}
-				<li><a href="javascript:;">가나다라마바사</a><p>2017.10.20</p></li>
-				<li><a href="javascript:;">가나다라마바사</a><p>2017.10.20</p></li>
-				<li><a href="javascript:;">가나다라마바사</a><p>2017.10.20</p></li>
-				<li><a href="javascript:;">가나다라마바사</a><p>2017.10.20</p></li>
-				<li><a href="javascript:;">가나다라마바사</a><p>2017.10.20</p></li>
 			</ul>
 			<div style="margin-top:60px; text-align:right">
 				<a href="javascript:;" style="font-size:14px;">공지사항 더보기</a>
