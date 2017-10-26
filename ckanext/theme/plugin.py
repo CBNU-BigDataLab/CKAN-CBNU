@@ -2,7 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import logging
 import ckanext.theme.logic.auth
-#import ckanext.theme.logic.action.create
+import ckanext.theme.logic.action.create
 #import ckanext.theme.logic.action.delete
 #import ckanext.theme.logic.action.update
 import ckanext.theme.logic.action.get
@@ -70,6 +70,14 @@ class ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
                 action='usingInformation')
 
         # Routing with Article
+        m.connect('ckanext_theme_article_new',
+                '/articles/new',
+                controller='ckanext.theme.controller:PageController',
+                action='new')
+        m.connect('ckanext_theme_article_save_new',
+		'/articles/save-new',
+		controller='ckanext.theme.controller:PageController',
+		action='save-new')
         m.connect('ckanext_theme_article_by_id',
                 '/articles/{id}',
                 controller='ckanext.theme.controller:PageController',
@@ -100,6 +108,9 @@ class ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def get_actions(self):
         return {
             'ckanext_theme_get_all_articles': ckanext.theme.logic.action.get.get_all_articles,
-	    'ckanext_theme_get_article_by_id': ckanext.theme.logic.action.get.get_article_by_id
+	    'ckanext_theme_get_article_by_id': ckanext.theme.logic.action.get.get_article_by_id,
+            'ckanext_theme_get_top_10_articles': ckanext.theme.logic.action.get.top_10_articles,
+            'ckanext_theme_get_count_all_articles': ckanext.theme.logic.action.get.get_count_all_articles,
+            'ckanext_theme_save_new_article': ckanext.theme.logic.action.create.article_create
         }
 

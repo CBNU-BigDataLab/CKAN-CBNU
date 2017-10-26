@@ -1,0 +1,58 @@
+{% extends "page.html" %}
+
+{% block subtitle %}Blog{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active"><a class"active" href="/articles">Blogs</a></li>
+{% endblock %}
+
+{% block primary_content %}
+  <section class="module">
+    <div class="module-content">
+      <h1>Blogs</h1>
+      <ul class="dataset-list list-unstyled">
+	{% for article in articles %}
+		<li class="dataset-item">
+			<div class="dataset-content">
+				<h3 class="dataset-heading"><a href="/articles/{{article.id}}">{{ article.title }}</a></h3>
+				<div>{{ article.content }}</div>
+			</div>
+		</li>
+        {% endfor %}
+      </ul>
+    </div>
+     {% block page_pagination %}
+      {{ c.page.pager(q=c.q) }}
+    {% endblock %}
+  </section>
+  
+  <!--<section class="module">
+  <div class="module-content pagination-wrapper">
+    <ul class="pagination">
+      {% if current != 1 %}<li><a href="?page={{ current - 1 }}">«</a></li>{% endif %}
+      {% for index in range(1, total+1) %}
+        <li{% if index == current %} class="active"{% endif %}><a href="?page={{ index }}">{{ index }}</a></li>
+      {% endfor %}
+      {% if current != total %}<li><a href="?page={{ current + 1 }}">»</a></li>{% endif %}
+    </ul>
+  </div>
+ </section>
+ -->
+{% endblock %}
+
+{% block secondary_content %}
+     {% block info_module %}
+    <section class="module module-narrow module-shallow">
+      <h2 class="module-heading"><i class="fa fa-info-circle"></i> What is Blog?</h2>
+      <div class="module-content">
+        <p>
+          {% trans %}
+          A CKAN Blog is a collection of data resources (such as files),
+          together with a description and other information, at a fixed URL.
+          Blogs are what users see when searching for data.
+          {% endtrans %}
+        </p>
+      </div>
+    </section>
+  {% endblock %}
+{% endblock %}

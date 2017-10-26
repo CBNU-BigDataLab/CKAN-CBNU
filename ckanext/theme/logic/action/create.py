@@ -44,35 +44,11 @@ class Article(base):
     created_date = Column(DateTime, default = _get_datetime)
     update_date = Column(DateTime, onupdate = _get_datetime)
 
-
-@toolkit.side_effect_free
-def get_all_articles(context, data_dict):
-    toolkit.check_access('ckanext_theme_list', context, data_dict)
+def article_create(context, data_dict):
     model = context['model']
-    currentPage = data_dict['page']
-    offset = (currentPage-1)*20
-    articles = model.Session.query(Article).order_by(desc(Article.created_date)).limit(20).offset(offset).all()
-    article_list = []
-    for article in articles:
-        print(str(article.id) + " =============  " + article.title)
-       #article_list.append(model_dictize(article, context))
-    return articles
+    model.Session.add(Article(title= data_dict['title'], author="ckan", content= data_dict['content']))
+    model.Session.commit()
+    return True
 
-def top_10_articles(context, data_dict):
-    toolkit.check_access('ckanext_theme_list', context, data_dict)
-    model = context['model']
-    articles = model.Session.query(Article).order_by(desc(Article.created_date)).limit(10).all()
-    return articles
 
-def get_count_all_articles(context, data_dict):
-    toolkit.check_access('ckanext_theme_list', context, data_dict)
-    model = context['model']
-    return model.Session.query(Article.id).count()
-
-def get_article_by_id(context, data_dict):
-    model = context['model']
-    print(data_dict['id'])
-    article = model.Session.query(Article).filter(Article.id == data_dict['id']).one()
-
-    print(article.title) 
-    return article 
+    
