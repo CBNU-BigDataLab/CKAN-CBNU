@@ -124,8 +124,7 @@
    The footer at the bottom of the site
    ==================================== */
 
-.site-footer,
-body {
+.site-footer {
   background-color: rgb(40, 40, 40);
 }
 /* The text in the footer. */
@@ -141,7 +140,7 @@ body {
 
 /* The latest-news */
 #latest-news li a {
-  font-size: 18px;
+  font-size: 14px;
   color: #000;
   font-weight: bold;
 }
@@ -150,17 +149,19 @@ body {
 }
 
 #tab-content .item{
-  border:1px solid black;
+  border:1px solid #d2d2d2;
   margin: 10px 0;
-  padding: 15px 0;
-  font-size: 16px; 
+  padding: 10px 0;
+  font-size: 14px; 
   text-align: center;
+  border-radius: 4px 4px 4px 4px;
+  color: #ccc;
 }
 #tab-content a{
-  color: #000;
+  color: #777777;
 }
 .nav-tabs > li > a {
-  font-size: 18px;
+  font-size: 14px;
 }
 #sub-menu{
 	background-color:#3498db; 
@@ -256,4 +257,15 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333333;
+    background: none;
+	background-color: #f2f2f2;
+
 }

@@ -80,7 +80,7 @@ class PageController(base.BaseController):
 	    data_dict = {'title': new_title, 'content': new_content}
 	    try:
 	        toolkit.get_action('ckanext_theme_save_new_article')(context, data_dict)
-                help.flash_success('The new blog has been added')
+                helper.flash_success('The new blog has been added')
             except toolkit.ObjectNotFound:
 		abort(404, 'Blog cannot save')
 

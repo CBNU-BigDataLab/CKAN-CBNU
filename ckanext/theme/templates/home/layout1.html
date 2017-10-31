@@ -1,3 +1,4 @@
+<div style="height:3px; background-color:#3498db;"></div>
 <div role="main">
   <div class="container">
     <div class="row row1 margin-t-40 margin-b-40">
@@ -20,17 +21,13 @@
 <div style="background-color: rgb(40, 40, 40); color:#FFF;">
   <div class="container" style="padding:50px 0px; text-align:center; font-size:24px;">
 	<div class="row" style="margin:auto">
-		<div class="col-md-4"> 
-			<p class="information">전체데이터셋</p>
-			<span><strong>{{ h.theme_organization_count() }}</strong> 건</span>
-		</div>
-		<div class="col-md-4"> 
-			<p class="information">소속기관 데이터셋</p>
-                        <span><strong>{{ h.theme_dataset_count() }}</strong> 건</span>
-		</div>
-		<div class="col-md-4">
-			<p class="information">산하기관데이터셋</p>
-                        <span><strong>{{ h.theme_agency_dataset_count() }}</strong> 건</span>
+		<div class="col-md-6"> 
+			<p class="information">전체 데이터셋
+			<span style="margin-left:20px; font-size:30px;"><strong>{{ h.theme_organization_count() }}</strong> </span>건</p>
+		</div> 
+		<div class="col-md-6"> 
+			<p class="information">소속기관 데이터셋
+            <span style="margin-left:20px; font-size:30px;"><strong>{{ h.theme_dataset_count() }}</strong> </span>건</p>
 		</div>
 	</div>
   </div>
@@ -40,30 +37,27 @@
     <div class="row">
       <div class="col-md-9">
 	<div class="panel">
-	      	<div class="panel-heading" style="padding:20px 15px; font-size:24px; font-weight:bold;">보건의료 데이터 분류</div>
+	      	<div class="panel-heading" style="padding:20px 15px; font-size:20px; font-weight:bold;">보건의료 데이터 분류</div>
 		<div class="panel-body">
-			<ul class="nav nav-tabs">
-				<li class="active" id="tab1"><a class="nav-link" href="#1" data-toggle="tab">소속기관</a></li>
-				<li id="tab2"><a class="nav-link" href="#2" data-toggle="tab">산하기관</a></li>
-				<li id="tab3"><a class="nav-link" href="#3" data-toggle="tab">주제별분류</a></li>
-				<li id="tab4"><a class="nav-link" href="#4" data-toggle="tab">타입별분류</a></li>
+			<ul class="nav nav-tabs" style="font-size: 14px;">
+				<li class="active" id="tab1"><a class="nav-link" href="#1" data-toggle="tab">소속기관별 분류</a></li>
+				<li id="tab2"><a class="nav-link" href="#3" data-toggle="tab">주제별 분류</a></li>
 			</ul>
-                	<div class="" id="tab-content">
-			</div>
+            <div class="" id="tab-content" style="margin-top: 20px;"></div>
 		</div>
 	</div>
       </div>
       <div class="col-md-3" id="latest-news">
 	<div class="panel">
-		<div class="panel-heading" style="padding:20px 15px; font-size:24px; font-weight:bold;">공지사항</div>
+		<div class="panel-heading" style="padding:20px 15px 0px 15px; font-size:20px; font-weight:bold;">공지사항</div>
 		<div class="panel-body">
-			<ul style="list-style-type: none; padding-left: 2em; text-indent: -2em;">
-                             	{% for article in h.theme_get_all_articles() %}
-                                       <li><a href="/articles/{{ article.id }}">{{ article.title }}</a><p>{{ article.created_date }}</p></li>
+			<ul style="list-style-type: none; padding-left:0px;">
+                {% for article in h.theme_get_all_articles() %}
+                <li style="padding:5px 0px 2px 0px; border-bottom: 1px solid #dadada; color: #4c4c4c;"><a href="/articles/{{ article.id }}">{{ h.markdown_extract(article.title, 30) }}</a><p>{{ article.created_date }}</p></li>
 				{% endfor %}
 			</ul>
-			<div style="margin-top:60px; text-align:right">
-				<a href="/articles" style="font-size:14px;">공지사항 더보기</a>
+			<div style="margin-top:20px; text-align:right">
+				<a href="/articles" style="font-size:12px;">더보기</a>
 			</div>
 		</div>
 	</div>
