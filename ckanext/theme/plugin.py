@@ -61,30 +61,30 @@ class ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         # Sitemap Page Routing
         m.connect('sitemap', 
 		'/sitemap',
-		controller='ckanext.theme.controller:PageController',
+		controller='ckanext.theme.controllers.controller:PageController',
 		action='sitemap')
         m.connect('usingInformation',
                 '/usage',
 
-                controller='ckanext.theme.controller:PageController',
+                controller='ckanext.theme.controllers.controller:PageController',
                 action='usingInformation')
 
         # Routing with Article
         m.connect('ckanext_theme_article_new',
                 '/articles/new',
-                controller='ckanext.theme.controller:PageController',
+                controller='ckanext.theme.controllers.controller:PageController',
                 action='new')
         m.connect('ckanext_theme_article_save_new',
 		'/articles/save-new',
-		controller='ckanext.theme.controller:PageController',
-		action='save-new')
+		controller='ckanext.theme.controllers.controller:PageController',
+		action='save_new')
         m.connect('ckanext_theme_article_by_id',
                 '/articles/{id}',
-                controller='ckanext.theme.controller:PageController',
+                controller='ckanext.theme.controllers.controller:PageController',
                 action='get_article_by_id') 
         m.connect('ckanext_theme_get_all_articles',
 		'/articles',
-                controller='ckanext.theme.controller:PageController',
+                controller='ckanext.theme.controllers.controller:PageController',
 		action='get_all_articles')
 	return m
 

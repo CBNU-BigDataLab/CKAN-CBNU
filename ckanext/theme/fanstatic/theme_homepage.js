@@ -10,7 +10,7 @@ $(function(){
 				for(var i=0; i<data.result.length;i++){
 					$("#tab-content").append("<div class='col-md-4'><div class='item'><a href='/organization/" + data.result[i].name + "'>" + data.result[i].display_name + "</a></div></div>");
 				}
-                                $("#tab-content").append("<div class='col-md-4'><div class='item'><a href='/organization'></a></div></div>");
+                                $("#tab-content").append("<div class='col-md-4'><div class='item'><a href='/organization'>All Organizations</a></div></div>");
 			}
 		});
 	});
