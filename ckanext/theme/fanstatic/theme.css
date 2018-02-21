@@ -285,6 +285,10 @@ body {
     color: black;
 }
 
+#organizations .logos a{
+   color: black;
+}
+
 #organizations .logos p{
     padding: 10px 0px;
     font-weight: bold;
