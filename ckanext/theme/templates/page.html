@@ -14,19 +14,21 @@
   {%- block header %}
     {% include "header.html" %}
   {% endblock -%}
+<!--
   <header id="sub-menu" style="display:none;">
     <div class="container">
 	<div class="">
-		<nav class="">
-			<ul class="nav nav-pills">
-			  <li><a href="/dataset?dataset_format=파일데이터">파일데이터</a></li>
-		      <li><a href="/dataset?dataset_format=오픈API+데이터">오픈API 데이터</a></li>
-			  <li><a href="/organization">소속기관 데이터</a></li>		     
-		    </ul>
-		 </nav>
+	     <nav class="">
+	         <ul class="nav nav-pills">
+	             <li><a href="/dataset?dataset_format=파일데이터">파일데이터</a></li>
+		     <li><a href="/dataset?dataset_format=오픈API+데이터">오픈API 데이터</a></li>
+		     <li><a href="/organization">소속기관 데이터</a></li>		     
+		 </ul>
+	     </nav>
 	</div>
      </div>
    </header>
+-->
   {# The content block allows you to replace the content of the page if needed #}
   {%- block content %}
     {% block maintag %}<div role="main">{% endblock %}

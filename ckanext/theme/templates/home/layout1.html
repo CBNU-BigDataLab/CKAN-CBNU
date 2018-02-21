@@ -1,24 +1,23 @@
-<div style="height:3px; background-color:#3498db;"></div>
-<div role="main">
+<!--<div style="height:3px; background-color:#3498db;"></div>-->
+<div role="main" style="background-color:#3498db; color: white;">
   <div class="container">
     <div class="row row1 margin-t-40 margin-b-40">
-      <div class="col-md-6"> 
-	<img src="http://www.healthcarebigdata.kr/epharos/img/main/slider-img-01.png" class="img-responsive">
-      </div>
       <div class="col-md-6">
         <div class="introduction margin-b-60">
-		<h1>보건의료 연구 데이터 포털 소개</h1>
-	        <p>본 보건의료 연구 데이터 포털은 질병, 환자, 의료, 약품, 복지 등 보건의료 및 보건의료 관련분야 데이터를 공유하기 위한 데이터 포털입니다. 연구 데이터 공유를 통해 데이터 셋 제공자와 사용자가 모두 윈윈할 수 있는 포털이 되길 기대합니다.
+		<h1>보건의료 연구 데이터 포털</h1>
+	        <p style="font-size: 20px;">본 보건의료 연구 데이터 포털은 질병, 환자, 의료, 약품, 복지 등 보건의료 및 보건의료 관련분야 데이터를 공유하기 위한 데이터 포털입니다.
         	</p>
+		<button class="btn btn-danger" onClick="location.href='/dataset'">자세히 보기</button>
         </div>
-        {% block search %}
+<!--        {% block search %}
           {% snippet 'home/snippets/search.html' %}
         {% endblock %}
+-->
       </div>
     </div>
   </div>
 </div>
-<div style="background-color: rgb(40, 40, 40); color:#FFF;">
+<!--<div style="background-color: rgb(40, 40, 40); color:#FFF;">
   <div class="container" style="padding:50px 0px; text-align:center; font-size:24px;">
 	<div class="row" style="margin:auto">
 		<div class="col-md-6"> 
@@ -32,24 +31,121 @@
 	</div>
   </div>
 </div>
+-->
 <div role="main">
   <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-	<div class="panel">
-	      	<div class="panel-heading" style="padding:20px 15px; font-size:20px; font-weight:bold;">보건의료 데이터 분류</div>
+    <div class="row" id="organizations">
+      <div class="col-md-12">
+<!--	<div class="panel">
+	 	<div class="panel-heading" style="padding:20px 15px; font-size:20px; font-weight:bold;">보건의료 데이터 분류</div>
 		<div class="panel-body">
 			<ul class="nav nav-tabs" style="font-size: 14px;">
 				<li class="active" id="tab1"><a class="nav-link" href="#1" data-toggle="tab">소속기관별 분류</a></li>
 				<li id="tab2"><a class="nav-link" href="#3" data-toggle="tab">주제별 분류</a></li>
 			</ul>
-            <div class="" id="tab-content" style="margin-top: 20px;"></div>
+                        <div class="" id="tab-content" style="margin-top: 20px;"></div>
 		</div>
 	</div>
+-->
+         <div class="row">
+             <div class="col-md-2">
+		 <div class="logos">
+                     <a class="logo" href="/dataset?topic=국제보건의료"><img src="uploads/homepage/1-global.png" alt="국제" title="국제"></a>
+  		     <p><a class="logo" href="/dataset?topic=국제보건의료">국제</a></p>                    
+                 </div>
+	     </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=의약품"><img src="uploads/homepage/2-medicine.png" alt="의약품" title="의약품"></a>
+                     <p><a class="logo" href="/dataset?topic=의약품">의약품</a></p> 
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=질병"><img src="uploads/homepage/3-disease.png" alt="질병" title="질병"></a>
+                     <p><a class="logo" href="/dataset?topic=질병">질병</a></p> 
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=건강"><img src="uploads/homepage/4-health.png" alt="건강" title="건강"></a>
+                     <p><a class="logo" href="/dataset?topic=건강">건강</a></p> 
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=환자"><img src="uploads/homepage/5-patient.png" alt="환자" title="환자"></a>
+                     <p><a class="logo" href="/dataset?topic=환자">환자</a></p> 
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=병원"><img src="uploads/homepage/6-hospital.png" alt="병원" title="병원"></a>
+                     <p><a class="logo" href="/dataset?topic=병원">병원</a></p> 
+                 </div>
+             </div>
+	 </div>
+
+         <div class="row">
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=노인"><img src="uploads/homepage/7-old.png" alt="노인" title="노인"></a>
+                     <p><a class="logo" href="/dataset?topic=국제보건의료">국제</a></p>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=진료"><img src="uploads/homepage/8-medicalpractice.png" alt="진료" title="진료"></a>
+                     <p><a class="logo" href="/dataset?topic=진료">진료</a></p>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=의료"><img src="uploads/homepage/9-medicaltreatment.png" alt="의료" title="의료"></a>
+                     <p><a class="logo" href="/dataset?topic=의료">의료</a></p>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=장애"><img src="uploads/homepage/10-obstacle.png" alt="장애" title="장애"></a>
+                     <p><a class="logo" href="/dataset?topic=장애">장애</a></p>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=치료"><img src="uploads/homepage/11-treatment.png" alt="치료" title="치료"></a>
+                     <p><a class="logo" href="/dataset?topic=치료">치료</a></p>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=임상Data"><img src="uploads/homepage/12-chartdata.png" alt="임상" title="임상"></a>
+                     <p><a class="logo" href="/dataset?topic=임상Data">임상</a></p>
+                 </div>
+             </div>
+         </div>
+
+         <div class="row">
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=통계"><img src="uploads/homepage/13-statistic.png" alt="통계" title="통계"></a>
+                     <p><a class="logo" href="/dataset?topic=통계">통계</a></p>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="logos">
+                     <a class="logo" href="/dataset?topic=연구"><img src="uploads/homepage/14-research.png" alt="연구" title="연구"></a>
+                     <p><a class="logo" href="/dataset?topic=연구">연구</a></p>
+                 </div>
+             </div>
+         </div>
+
+
       </div>
-      <div class="col-md-3" id="latest-news">
+
+<!--      <div class="col-md-3" id="latest-news">
 	<div class="panel">
-		<div class="panel-heading" style="padding:20px 15px 0px 15px; font-size:20px; font-weight:bold;">공지사항</div>
+	   <div class="panel-heading" style="padding:20px 15px 0px 15px; font-size:20px; font-weight:bold;">공지사항</div>
 		<div class="panel-body">
 			<ul style="list-style-type: none; padding-left:0px;">
                 {% for article in h.theme_get_all_articles() %}
@@ -62,6 +158,40 @@
 		</div>
 	</div>
       </div>
+-->
+
+    </div>
+
+    <div class="row" id="recent">
+        <div class="col-md-12">
+            <div class="col-md-6" id="recent-datasets"> 
+                <div class="classWithPad">
+                    <h1>신규 데이터셋</h1>
+                    <ul style="list-style-type: none; padding-left:0px;">
+                    {% for dataset in h.theme_get_recent_datasets() %}
+                        <li style="padding:10px 0px; color: #4c4c4c;"><a href="/dataset/{{ dataset.id }}">{{ h.markdown_extract(dataset.name ,30) }}</a></li>
+                    {% endfor %}
+                    </ul>
+                    <div>
+                        <button class="btn btn-danger" onClick="location.href='/dataset'">더보기</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6" id="recent-articles">
+                <div class="classWithPad">
+                    <h1>관련 게시물</h1>
+                    <ul style="list-style-type: none; padding-left:0px;">
+                    {% for article in h.theme_get_all_articles() %}
+                        <li style="padding:10px 0px; color: #4c4c4c;"><a href="/articles/{{ article.id }}">{{ h.markdown_extract(article.title, 30) }}</a></li>
+                    {% endfor %}
+                    </ul>
+                    <div>
+                        <button class="btn btn-danger" onClick="location.href='/articles'">더보기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 </div>

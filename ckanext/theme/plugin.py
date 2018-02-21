@@ -41,6 +41,16 @@ def get_dataset_count():
 def get_agency_dataset_count():
     return format(2460,'0,d')
 
+def get_recent_datasets():
+    try:
+        datasets = toolkit.get_action('current_package_list_with_resources')(data_dict={'limit':'10'})
+    except toolkit.ObjectNotFound:
+         return {'success': False,
+                'msg': "The package list doesn't exist, so only sysadmins "
+                       "are authorized to get the package list."}
+    print(datasets)
+    return datasets 
+
 class ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer),
     plugins.implements(plugins.IRoutes, inherit=True),
@@ -94,7 +104,8 @@ class ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
                 'theme_get_all_articles'   : theme_helpers.get_top_articles,
                 'theme_organization_count' : get_organization_count,
 		'theme_dataset_count' : get_dataset_count,
-                'theme_agency_dataset_count': get_agency_dataset_count
+                'theme_agency_dataset_count': get_agency_dataset_count,
+                'theme_get_recent_datasets' : get_recent_datasets
         
         }
 
