@@ -31,12 +31,12 @@ def get_organization_count():
     return format(46346,'0,d')
 
 def get_dataset_count():
-    request = urllib2.Request('http://localhost/api/3/action/package_search?rows=25&start=0')
-    request.add_header('Authorization', '7abc032e-dee4-46a9-88d0-616d4a3dfb8b')
-    response = urllib2.urlopen(request)
-    response_dict = json.loads(response.read())
-    return format(response_dict['result']['count'],'0,d')
-    #return format(44806, '0,d')
+    #request = urllib2.Request('http://localhost/api/3/action/package_search?rows=25&start=0')
+    #request.add_header('Authorization', '7abc032e-dee4-46a9-88d0-616d4a3dfb8b')
+    #response = urllib2.urlopen(request)
+    #response_dict = json.loads(response.read())
+    #return format(response_dict['result']['count'],'0,d')
+    return format(44806, '0,d')
 
 def get_agency_dataset_count():
     return format(2460,'0,d')
